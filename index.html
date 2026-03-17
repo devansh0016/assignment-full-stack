@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebD Assignment - Devansh Dixit</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
+        h1 { color: #667eea; margin: 0; }
+        .assignment-info {
+            background: rgba(255,255,255,0.9);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s;
+        }
+        button:hover { transform: scale(1.05); }
+        #output { 
+            background: white; 
+            padding: 1rem; 
+            border-radius: 10px; 
+            margin-top: 1rem;
+            min-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎓 Web Development Assignment</h1>
+        <div class="assignment-info">
+            <p><strong>Student:</strong> Devansh Dixit</p>
+            <p><strong>Location:</strong> Lucknow, UP</p>
+            <p><strong>Date:</strong> March 17, 2026</p>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>Welcome to My First WebD Project</h2>
+            <p>This is a fully responsive single-page application demonstrating modern HTML5, CSS3 gradients, and interactive JavaScript.</p>
+            <button onclick="showMessage()">Click Me!</button>
+            <div id="output">Click the button to see JavaScript in action...</div>
+        </section>
+    </main>
+
+    <script>
+        function showMessage() {
+            const output = document.getElementById('output');
+            const messages = [
+                "✅ JavaScript is working perfectly!",
+                "🚀 Responsive design detected",
+                "💻 Ready for VS Code + GitHub deployment",
+                "📱 Works on mobile too!",
+                "🎯 Perfect for web development assignments"
+            ];
+            const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+            output.textContent = randomMsg;
+            output.style.background = '#e8f5e8';
+        }
+
+        // Auto-greet on page load
+        window.onload = () => {
+            document.getElementById('output').textContent = 'Page loaded successfully! Ready for your assignment content.';
+        };
+    </script>
+</body>
+</html>
