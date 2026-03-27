@@ -1,0 +1,263 @@
+/* ============================================
+   styles.css — Devansh Dixit | WebD Assignment
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --primary:    #4f46e5;
+  --primary-lt: #818cf8;
+  --accent:     #06b6d4;
+  --bg:         #0f0e17;
+  --surface:    #1a1826;
+  --card:       #221f35;
+  --border:     rgba(129, 140, 248, 0.15);
+  --text:       #e2e8f0;
+  --muted:      #94a3b8;
+  --success:    #10b981;
+  --radius:     14px;
+  --shadow:     0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Subtle grid background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(79, 70, 229, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 70, 229, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* ---------- Header ---------- */
+header {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  animation: slideDown 0.6s ease both;
+}
+
+/* Glowing top bar */
+header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  color: var(--primary-lt);
+  letter-spacing: -0.5px;
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- Assignment Info Cards ---------- */
+.assignment-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.info-chip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+}
+
+.info-chip .label {
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.info-chip .value {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ---------- Main Content ---------- */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+
+h2 {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.1rem;
+  color: var(--primary-lt);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+h2::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  margin-left: 0.5rem;
+}
+
+p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ---------- Button ---------- */
+button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4);
+}
+
+button:hover {
+  background: #4338ca;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* ---------- Output Box ---------- */
+#output {
+  margin-top: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text);
+  min-height: 52px;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+#output.success {
+  border-color: rgba(16, 185, 129, 0.4);
+  background: rgba(16, 185, 129, 0.06);
+  color: #6ee7b7;
+}
+
+/* ---------- Tech Stack Badges ---------- */
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.badge {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--primary-lt);
+  background: rgba(79, 70, 229, 0.08);
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-family: 'Space Mono', monospace;
+  opacity: 0.6;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 540px) {
+  header, section {
+    padding: 1.5rem 1.25rem;
+  }
+  .assignment-info {
+    grid-template-columns: 1fr 1fr;
+  }
+}
